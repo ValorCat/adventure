@@ -1,0 +1,82 @@
+
+====================  The Adventure Begins...  ====================
+
+You find yourself in the town of Riverrun. Your friend Barge Halbard runs the local
+tavern, the Dancing Pixie. One day, he introduces you to two friends, Lorath and Jozan.
+Lorath is an elven wizard and Jozan is a human cleric.
+
+
+
+
+// recover the sword from the goblins
+
+The cave widens into a small cavern. Several large boulders stand in the center of the
+chamber. A dark passage in the far wall leads onwards.
+
+Talion holds his dagger. Lorath holds only his wand. Jozan holds his mace.
+
+[PARTY] listen to passage
+
+Talion faintly hears two gruff voices conversing in the Goblin tongue in the next
+chamber.
+
+[PARTY] separate Talion
+
+Talion leaves the party.
+
+[TALION] draw longbow
+
+Talion sheathes his dagger draws a longbow.
+
+[PARTY] wait
+
+[TALION] sneak into passage
+
+The dark passage opens into a small chamber lit by torchlight. Several wooden crates lie
+in a corner. Another passage leads onwards. There are two goblins in the chamber carrying
+wooden clubs.
+
+[TALION] examine the goblins
+
+The goblins appear uninjured.
+
+[TALION] attack a goblin
+
+Talion shoots the goblin, lodging an arrow in its shoulder.
+
+[TALION] return
+
+Talion returns to the entry cavern. Several large boulders stand in the center of the
+chamber. Daylight streams through the cave entrance in the far wall. The party is in this chamber.
+
+The goblins enter the cavern through the dark passage.
+
+[LORATH] cast magic missile at the goblin with an arrow
+
+Lorath propels a bolt of energy at the goblin. With a squeal, it falls to the ground.
+
+[JOZAN] attack the goblin
+
+Jozan swings his mace at the goblin but misses.
+
+[TALION] attack the goblin
+
+Talion shoots the goblin. It slumps to the ground.
+
+[PARTY] search bodies
+
+The goblins carry 2 wooden clubs and 2 silver pieces.
+Wooden clubs: 1 to Jozan
+Silver pieces: Lorath
+1 wooden club remains.
+
+[PARTY] gear
+
+Talion: longbow (drawn), dagger, leather armor, quiver (18/20)
+   Pack: (empty)
+Lorath: wand (drawn), dagger, cloth robes
+   Pack: 50 ft. rope, 2 sp
+Jozan: mace (drawn), chainmail armor, amulet of Sune
+   Pack: wooden club, cleansing potion
+
+[PARTY] 
