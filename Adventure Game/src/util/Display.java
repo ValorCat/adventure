@@ -1,19 +1,31 @@
 package util;
 
-public class Output {
+import java.util.Scanner;
+
+public class Display {
 	
 	private static final int MAX_LINE_SIZE = 90;
+	private static final Scanner INPUT = new Scanner(System.in);
 	
-	public static void display(String text) {
+	public static void write(String text) {
 		System.out.println(getWrappedText(text));
 	}
 	
-	public static void display(String text, Object... params) {
+	public static void write(String text, Object... params) {
 		System.out.print(String.format(getWrappedText(text), params));
 	}
 	
-	public static void separate() {
+	public static String input(String prefix) {
+		System.out.print(prefix + " ");
+		return INPUT.nextLine();
+	}
+	
+	public static void space() {
 		System.out.println();
+	}
+	
+	public static void closeInput() {
+		INPUT.close();
 	}
 	
 	private static String getWrappedText(String text) {

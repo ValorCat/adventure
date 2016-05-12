@@ -3,24 +3,41 @@ package main;
 import java.util.Iterator;
 
 import bio.Character;
+import item.ArcaneFocus;
 import item.Item;
 import item.ItemSize;
 import item.MeleeWeapon;
-import util.Output;
+import util.Display;
 import world.Adventure;
 import world.Region;
 import world.RegionExit;
 
 public class Game {
 
-	private static Party party;
-	private static Adventure adv;
+	public static Party party;
+	public static Adventure quest;
 	
 	public static void main(String[] args) {
 		setup();
-		Output.display(adv.getRegion(0).getDescriptorOnEntrance(0));
-		Output.separate();
+		Display.write(quest.getRegion(0).getDescriptorOnEntrance(0));
+		Display.space();
 		displayDrawnItems();
+		Display.space();
+		try {
+			while (isPartyAlive()) {
+				String input = Display.input("[PARTY]");
+				System.out.println("!!!! " + input);
+				if (input.equals("x")) {
+					throw new RuntimeException();
+				}
+				Display.space();
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			Display.closeInput();
+		}
+		Display.write("\nFarewell.");
 	}
 	
 	public static void displayDrawnItems() {
@@ -30,13 +47,24 @@ public class Game {
 			Item drawnItem = player.getGear().getItemInSlot("drawn");
 			Item offhandItem = player.getGear().getItemInSlot("offhand");
 			if (drawnItem != null) {
-				Output.display("%s holds %s %s. ", player.getName(), player.getPronouns().getPossessive(), drawnItem.getName());
+				Display.write("%s holds %s %s. ", player.getName(), player.getPronouns().getPossessive(), drawnItem.getName());
 			} else if (offhandItem != null) {
-				Output.display("%s holds only %s %s. ", player.getName(), player.getPronouns().getPossessive(), offhandItem.getName());
+				Display.write("%s holds only %s %s. ", player.getName(), player.getPronouns().getPossessive(), offhandItem.getName());
 			} else {
-				Output.display("%s is unarmed. ", player.getName());
+				Display.write("%s is unarmed. ", player.getName());
 			}
 		}
+		Display.space();
+	}
+	
+	public static boolean isPartyAlive() {
+		Iterator<Character> iter = party.getParty();
+		while (iter.hasNext()) {
+			if (!iter.next().getHealth().isEmpty()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static void setup() {
@@ -47,12 +75,14 @@ public class Game {
 		party.addPartyMember(talion);
 		
 		Character lorath = new Character("Lorath", "male", 6);
-		lorath.getGear().placeItemInSlot("drawn", new MeleeWeapon("dagger", 1, 1, 4, true, true, ItemSize.LIGHT, 2, 0.5f));
+		lorath.getGear().placeItemInSlot("drawn", new ArcaneFocus("wand", 1, 0, 1, 2, ItemSize.LIGHT, 25, 0.2f));
 		party.addPartyMember(lorath);
 		
-		party.addPartyMember(new Character("Jozan", "male", 8));
+		Character jozan = new Character("Jozan", "male", 8);
+		jozan.getGear().placeItemInSlot("drawn", new MeleeWeapon("mace", 2, 1, 4, false, false, ItemSize.STANDARD, 3, 3));
+		party.addPartyMember(jozan);
 		
-		adv = new Adventure();
+		quest = new Adventure();
 		
 		Region caveEnter = new Region("Several large boulders stand in the center of the chamber.");
 		caveEnter.addExit(new RegionExit("entrance", -1,
@@ -70,8 +100,8 @@ public class Game {
 				"An aging wooden door stands in one wall.",
 				"<!>"));
 		
-		adv.addRegion(caveEnter);
-		adv.addRegion(cratesRoom);
+		quest.addRegion(caveEnter);
+		quest.addRegion(cratesRoom);
 	}
-
+	
 }

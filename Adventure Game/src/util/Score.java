@@ -2,16 +2,17 @@ package util;
 
 public class Score {
 	
-	private int value = 0;
+	private int value;
 	private int max;
 	
 	public Score(int maxValue) {
+		this.value = maxValue;
 		this.max = maxValue;
 	}
 	
 	public Score(int value, int maxValue) {
-		this(maxValue);
 		this.value = value;
+		this.max = maxValue;
 	}
 	
 	public int getValue() {
@@ -28,6 +29,14 @@ public class Score {
 	
 	public int getAmountUntilFull() {
 		return max - value;
+	}
+	
+	public boolean isEmpty() {
+		return value == 0;
+	}
+	
+	public boolean isFull() {
+		return value >= max;
 	}
 	
 	public void update(int amount) {

@@ -2,22 +2,22 @@ package item;
 
 import util.Range;
 
-public class RangedWeapon implements Weapon {
+public class ArcaneFocus implements Weapon {
 
 	private String name;
+	private int spellBonus;
 	private int hitBonus;
 	private Range damage;
-	private String ammoType;
 	private ItemSize size;
 	private int value;
 	private float weight;
 	
-	public RangedWeapon(String name, int hitBonus, int minDamage, int maxDamage, String ammoType,
+	public ArcaneFocus(String name, int spellBonus, int hitBonus, int minDamage, int maxDamage,
 			ItemSize size, int value, float weight) {
 		this.name = name;
+		this.spellBonus = spellBonus;
 		this.hitBonus = hitBonus;
 		this.damage = new Range(minDamage, maxDamage);
-		this.ammoType = ammoType;
 		this.size = size;
 		this.value = value;
 		this.weight = weight;
@@ -27,16 +27,16 @@ public class RangedWeapon implements Weapon {
 		return name;
 	}
 
+	public int getSpellBonus() {
+		return spellBonus;
+	}
+	
 	public int getHitBonus() {
 		return hitBonus;
 	}
 	
 	public Range getDamage() {
 		return damage;
-	}
-	
-	public String getAmmoType() {
-		return ammoType;
 	}
 	
 	public ItemSize getSize() {
@@ -49,10 +49,6 @@ public class RangedWeapon implements Weapon {
 
 	public float getWeight() {
 		return weight;
-	}
-	
-	public static void main(String[] args) {
-		RangedWeapon bow = new RangedWeapon("longbow", 0, 1, 8, "arrow", ItemSize.HEAVY, 80, 6);
 	}
 	
 }

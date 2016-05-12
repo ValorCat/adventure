@@ -13,7 +13,7 @@ Lorath is an elven wizard and Jozan is a human cleric.
 The cave widens into a small cavern. Several large boulders stand in the center of the
 chamber. A dark passage in the far wall leads onwards.
 
-Talion holds his dagger. Lorath holds only his wand. Jozan holds his mace.
+Talion holds his dagger. Lorath holds his wand. Jozan holds his mace.
 
 [PARTY] listen to passage
 
