@@ -8,6 +8,14 @@ public class Output {
 		System.out.println(getWrappedText(text));
 	}
 	
+	public static void display(String text, Object... params) {
+		System.out.print(String.format(getWrappedText(text), params));
+	}
+	
+	public static void separate() {
+		System.out.println();
+	}
+	
 	private static String getWrappedText(String text) {
 		int textLength = text.length();
 		int offset = 0;

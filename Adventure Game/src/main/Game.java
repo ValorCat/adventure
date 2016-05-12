@@ -1,6 +1,9 @@
 package main;
 
+import java.util.Iterator;
+
 import bio.Character;
+import item.Item;
 import item.ItemSize;
 import item.MeleeWeapon;
 import util.Output;
@@ -14,17 +17,40 @@ public class Game {
 	private static Adventure adv;
 	
 	public static void main(String[] args) {
+		setup();
+		Output.display(adv.getRegion(0).getDescriptorOnEntrance(0));
+		Output.separate();
+		displayDrawnItems();
+	}
+	
+	public static void displayDrawnItems() {
+		Iterator<Character> iter = party.getParty();
+		while (iter.hasNext()) {
+			Character player = iter.next();
+			Item drawnItem = player.getGear().getItemInSlot("drawn");
+			Item offhandItem = player.getGear().getItemInSlot("offhand");
+			if (drawnItem != null) {
+				Output.display("%s holds %s %s. ", player.getName(), player.getPronouns().getPossessive(), drawnItem.getName());
+			} else if (offhandItem != null) {
+				Output.display("%s holds only %s %s. ", player.getName(), player.getPronouns().getPossessive(), offhandItem.getName());
+			} else {
+				Output.display("%s is unarmed. ", player.getName());
+			}
+		}
+	}
+	
+	public static void setup() {
 		party = new Party();
 		
-		Character talion = new Character("Talion", 10);
+		Character talion = new Character("Talion", "male", 10);
 		talion.getGear().placeItemInSlot("drawn", new MeleeWeapon("dagger", 1, 1, 4, true, true, ItemSize.LIGHT, 2, 0.5f));
 		party.addPartyMember(talion);
 		
-		Character lorath = new Character("Lorath", 6);
+		Character lorath = new Character("Lorath", "male", 6);
 		lorath.getGear().placeItemInSlot("drawn", new MeleeWeapon("dagger", 1, 1, 4, true, true, ItemSize.LIGHT, 2, 0.5f));
 		party.addPartyMember(lorath);
 		
-		party.addPartyMember(new Character("Jozan", 8));
+		party.addPartyMember(new Character("Jozan", "male", 8));
 		
 		adv = new Adventure();
 		
@@ -46,8 +72,6 @@ public class Game {
 		
 		adv.addRegion(caveEnter);
 		adv.addRegion(cratesRoom);
-		
-		Output.display(adv.getRegion(0).getDescriptorOnEntrance(0));
 	}
 
 }

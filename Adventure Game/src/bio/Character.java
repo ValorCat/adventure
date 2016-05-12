@@ -3,18 +3,21 @@ package bio;
 import item.EquipmentSet;
 import item.Inventory;
 import util.AttributeSet;
+import util.PronounSet;
 import util.Score;
 
 public class Character {
 	
 	private String name;
+	private PronounSet pronouns;
 	private AttributeSet stats;
 	private Score health;
 	private EquipmentSet gear;
 	private Inventory items;
 	
-	public Character(String name, int health) {
+	public Character(String name, String sexPreset, int health) {
 		this.name = name;
+		this.pronouns = new PronounSet(sexPreset);
 		this.stats = new AttributeSet();
 		this.health = new Score(health);
 		this.gear = new EquipmentSet(EquipmentSet.SetType.HUMANOID);
@@ -23,6 +26,10 @@ public class Character {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public PronounSet getPronouns() {
+		return pronouns;
 	}
 	
 	public AttributeSet getAttributes() {
