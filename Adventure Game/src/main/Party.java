@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import bio.Character;
@@ -17,8 +16,8 @@ public class Party {
 		}
 	}
 	
-	public Iterator<Character> getParty() {
-		return party.iterator();
+	public Iterable<Character> getParty() {
+		return party;
 	}
 	
 	public void addPartyMember(Character member) {

@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Iterator;
-
 import bio.Character;
 import item.ArcaneFocus;
 import item.Item;
@@ -41,9 +39,7 @@ public class Game {
 	}
 	
 	public static void displayDrawnItems() {
-		Iterator<Character> iter = party.getParty();
-		while (iter.hasNext()) {
-			Character player = iter.next();
+		for (Character player : party.getParty()) {
 			Item drawnItem = player.getGear().getItemInSlot("drawn");
 			Item offhandItem = player.getGear().getItemInSlot("offhand");
 			if (drawnItem != null) {
@@ -58,9 +54,8 @@ public class Game {
 	}
 	
 	public static boolean isPartyAlive() {
-		Iterator<Character> iter = party.getParty();
-		while (iter.hasNext()) {
-			if (!iter.next().getHealth().isEmpty()) {
+		for (Character player : party.getParty()) {
+			if (!player.getHealth().isEmpty()) {
 				return true;
 			}
 		}

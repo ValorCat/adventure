@@ -51,8 +51,4 @@ public class RangedWeapon implements Weapon {
 		return weight;
 	}
 	
-	public static void main(String[] args) {
-		RangedWeapon bow = new RangedWeapon("longbow", 0, 1, 8, "arrow", ItemSize.HEAVY, 80, 6);
-	}
-	
 }
